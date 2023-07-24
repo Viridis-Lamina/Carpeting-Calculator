@@ -20,8 +20,32 @@ namespace CarpetCalculator
             Console.WriteLine();
 
             // Next I get the users to input their values I make seperate string variable that get converted into doubles later.
-            
-            Console.WriteLine("Please input the Height of the room in Ft");
+
+
+            char inputChar;
+            do
+            {
+                Console.WriteLine("Please input the Height of the room in Ft");
+                inputChar = Console.ReadKey().KeyChar;
+
+                if (char.IsLetter(inputChar))
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Please do not input letters");
+                }
+                else if (char.IsSymbol(inputChar))
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Please do not input Symbols");
+                }
+                else
+                {
+                    // Valid input, break out of the loop and continue with the code
+                    break;
+                }
+            } while (true);
+
+
             String InputH = Console.ReadLine();
             Console.WriteLine("Please input the Width of the room in Ft");
             String InputW = Console.ReadLine();
@@ -32,6 +56,8 @@ namespace CarpetCalculator
             Cost = (Height * Width) * Squarefootcost;
 
             Console.WriteLine("The Cost to Carpet this room is £{0}", Cost);
+
+           
 
         }
     }
